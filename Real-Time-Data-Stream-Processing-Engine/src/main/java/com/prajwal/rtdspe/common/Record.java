@@ -96,9 +96,7 @@ public class Record {
         long computedCrc = crc32.getValue();
 
         if (computedCrc != crc) {
-            throw new IllegalStateException(
-                    "Record corrupted: expected CRC " + crc + " but computed " + computedCrc
-            );
+            throw new IllegalStateException("Record corrupted: expected CRC " + crc + " but computed " + computedCrc);
         }
 
         // Now that content is verified, parse fields out of it.
