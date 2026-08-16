@@ -1,7 +1,6 @@
-package com.prajwal.rtdspe.common;
+package com.prajwal.rtdspe.storage;
 
-import java.io.Serializable;
-
+import com.prajwal.rtdspe.common.Record;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -14,10 +13,10 @@ class RecordTest {
         long timestamp = System.currentTimeMillis();
         Record original = new Record(key, value, timestamp);
 
-        byte[] serialId = original.serialize();
+        byte[] serialized = original.serialize();
         Record restored = Record.deserialize(serialized);
         assertArrayEquals(original.getKey(), restored.getKey());
-        assertEquals(original.getValue(), restored.getValue());
+        assertArrayEquals(original.getValue(), restored.getValue());
         assertEquals(original.getTimestamp(), restored.getTimestamp());
     }
 
@@ -27,7 +26,7 @@ class RecordTest {
         long timestamp = System.currentTimeMillis();
         Record original = new Record(null, value, timestamp);
         byte[] serialized = original.serialize();
-        byte[] restored = Record.deserialize(serialized);
+        Record restored = Record.deserialize(serialized);
         assertNull(restored.getKey());
         assertArrayEquals(original.getValue(), restored.getValue());
         assertEquals(original.getTimestamp(), restored.getTimestamp());
