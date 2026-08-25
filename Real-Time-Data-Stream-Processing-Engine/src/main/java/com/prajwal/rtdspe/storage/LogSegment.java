@@ -2,6 +2,7 @@ package com.prajwal.rtdspe.storage;
 
 import com.prajwal.rtdspe.common.Record;
 
+    
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.nio.channels.FileChannel;
@@ -48,9 +49,8 @@ public class LogSegment {
         long currentOffset = baseOffset;
         long position = 0;
 
-        While(currentOffset <= offset)
-        {
-            ByteBuffer lenghtBuf = ByteBuffer.allocate(4);
+        while(currentOffset <= offset){
+            ByteBuffer lengthBuf = ByteBuffer.allocate(4);
             readChannel.read(lengthBuf, position);
             lengthBuf.flip();
             int length = lengthBuf.getInt();

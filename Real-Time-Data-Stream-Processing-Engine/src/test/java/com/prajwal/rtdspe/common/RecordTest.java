@@ -1,4 +1,4 @@
-package com.prajwal.rtdspe.storage;
+package com.prajwal.rtdspe.common;
 
 import com.prajwal.rtdspe.common.Record;
 import java.io.Serializable;
